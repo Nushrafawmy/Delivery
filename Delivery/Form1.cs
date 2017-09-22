@@ -681,8 +681,8 @@ namespace Delivery
                         cmd.Parameters.Add("@StockWeight", MySqlDbType.Int32).Value = Convert.ToInt32(txt_cweight.Text);
                         cmd.Parameters.Add("@NoOfTurn", MySqlDbType.Int32).Value = Convert.ToInt32(txt_noofTc.Text);
                         cmd.Parameters.Add("@VehicleNumber", MySqlDbType.VarChar).Value = txt_vnumberC.Text;
-                        cmd.Parameters.Add("@Staffid", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxCustomer.SelectedValue);
-
+                        cmd.Parameters.Add("@Staffid", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxCustomer.SelectedIndex);
+                       // cmd.Parameters.Add("@ServiceType", MySqlDbType.VarChar).Value = Convert.ToInt32(comboBoxServiT.SelectedIndex);
 
                         try
                         {
@@ -919,9 +919,8 @@ namespace Delivery
                         cmd.Parameters.Add("@StockWeight", MySqlDbType.Int32).Value = Convert.ToInt32(txtweightS.Text);
                         cmd.Parameters.Add("@NoOfTurn", MySqlDbType.Int32).Value = Convert.ToInt32(txtSnoTurn.Text);
                         cmd.Parameters.Add("@VehicleNumber", MySqlDbType.VarChar).Value = txt_Svnum.Text;
-                        cmd.Parameters.Add("@Staffid", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxStaffS.SelectedValue);
-
-
+                        cmd.Parameters.Add("@Staffid", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxStaffS.SelectedIndex);
+                      
                         try
                         {
                             conn.Open();
@@ -1119,7 +1118,7 @@ namespace Delivery
                         cmd.Parameters.Add("@StockWeight", MySqlDbType.Int32).Value = Convert.ToInt32(txtweightS.Text);
                         cmd.Parameters.Add("@NoOfTurn", MySqlDbType.Int32).Value = Convert.ToInt32(txtSnoTurn.Text);
                         cmd.Parameters.Add("@VehicleNumber", MySqlDbType.VarChar).Value = txt_Svnum.Text;
-                        cmd.Parameters.Add("@Staffid", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxStaffS.SelectedValue);
+                        cmd.Parameters.Add("@Staffid", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxStaffS.SelectedIndex);
 
                         int rows = 0;
                         try
@@ -1210,6 +1209,7 @@ namespace Delivery
                         cmd.Parameters.Add("@ServiceType", MySqlDbType.VarChar).Value = Convert.ToInt32(comboBoxServiT.SelectedIndex);
                         cmd.Parameters.Add("@ServiceDate", MySqlDbType.VarChar).Value = datePicService.Text;
                         cmd.Parameters.Add("@ServiceAmount", MySqlDbType.Int32).Value = txt_serAmount.Text;
+                        
 
                         int rows = 0;
 
@@ -1308,8 +1308,8 @@ namespace Delivery
                         cmd.Parameters.Add("@StockWeight", MySqlDbType.Int32).Value = Convert.ToInt32(txt_cweight.Text);
                         cmd.Parameters.Add("@NoOfTurn", MySqlDbType.Int32).Value = Convert.ToInt32(txt_noofTc.Text);
                         cmd.Parameters.Add("@VehicleNumber", MySqlDbType.VarChar).Value = txt_vnumberC.Text;
-                        cmd.Parameters.Add("@Staffid", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxCustomer.SelectedValue);
-
+                        cmd.Parameters.Add("@Staffid", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxCustomer.SelectedIndex);
+                        
                         int rows = 0;
 
                         try
