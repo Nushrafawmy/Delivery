@@ -12,12 +12,12 @@ using System.IO;
 
 namespace Delivery
 {
-    public partial class Form1 : Form
+    public partial class Vechicle_Mgt : Form
     {
 
         public string connString = "Server=localhost;Database=inventory;Uid=root;Password=;";
 
-        public Form1()
+        public Vechicle_Mgt()
         {
             InitializeComponent();
         }
@@ -551,13 +551,14 @@ namespace Delivery
                 {
 
                     string Query = null;
-                    Query = "INSERT INTO leasing_details(VehicleNumber,LeaserName,LeaserAddress,PhoneNumber,StartDate,EndDate,Interestrate,InitialPayement)" +
-                        "VALUES(@VehicleNumber,@LeaserName,@LeaserAddress,@PhoneNumber,@StartDate,@EndDate,@Interestrate,@InitialPayement);";
+                    Query = "INSERT INTO leasing_details(VehicleNumber,LeaserName,LeaserAddress,PhoneNumber,StartDate,EndDate,Interestrate,InitialPayement,Balance)" +
+                        "VALUES(@VehicleNumber,@LeaserName,@LeaserAddress,@PhoneNumber,@StartDate,@EndDate,@Interestrate,@InitialPayement,@Balance);";
 
-
+                    string VehicleNumber = comboBox1VechileNo.ToString();
                     using (MySqlCommand cmd = new MySqlCommand(Query, conn))
                     {
-                        cmd.Parameters.Add("@VehicleNumber", MySqlDbType.VarChar).Value = Convert.ToInt32(comboBox1VechileNo.SelectedValue);
+                        cmd.Parameters.Add("@VehicleNumber", MySqlDbType.VarChar).Value = Convert.ToInt32(comboBox1VechileNo.SelectedIndex);
+                       // cmd.Parameters.Add("@Staffid", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxCustomer.SelectedIndex);
 
                         cmd.Parameters.Add("@LeaserName", MySqlDbType.VarChar).Value = txt_Lname.Text;
                         cmd.Parameters.Add("@LeaserAddress", MySqlDbType.VarChar).Value = txt_Laddress.Text;
@@ -567,6 +568,7 @@ namespace Delivery
                         //cmd.Parameters.Add("@EndDate", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxStaffS.SelectedValue);StartDate,EndDate//@StartDate,@EndDate,
                         cmd.Parameters.Add("@Interestrate", MySqlDbType.Int32).Value = txt_interstRate.Text;
                         cmd.Parameters.Add("@InitialPayement", MySqlDbType.Int32).Value = txt_intialPay.Text;
+                        cmd.Parameters.Add("@Balance", MySqlDbType.Double).Value = text_balance.Text;
 
 
                         try
@@ -615,17 +617,18 @@ namespace Delivery
                 {
 
                     string Query = null;
-                    Query = "INSERT INTO service_details(VehicleNumber,ServiceType,ServiceDate,ServiceAmount)" +
-                                                 "VALUES(@VehicleNumber,@ServiceType,@ServiceDate,@ServiceAmount);";
-
+                    Query = "INSERT INTO service_details(VehicleNumber,ServiceType,ServiceDate,ServiceAmount,NextSerDate)" +
+                                                 "VALUES(@VehicleNumber,@ServiceType,@ServiceDate,@ServiceAmount,@NextSerDate);";
+                   // string VehicleNumber = comboBox1VechileNo.ToString();
 
                     using (MySqlCommand cmd = new MySqlCommand(Query, conn))
                     {
                         cmd.Parameters.Add("@VehicleNumber", MySqlDbType.VarChar).Value = txt_vnumberSer.Text;
 
-                        cmd.Parameters.Add("@ServiceType", MySqlDbType.VarChar).Value = Convert.ToInt32(comboBoxServiT.SelectedIndex);
+                        cmd.Parameters.Add("@ServiceType", MySqlDbType.VarChar).Value =(comboBoxServiT.SelectedIndex).ToString();
                         cmd.Parameters.Add("@ServiceDate", MySqlDbType.VarChar).Value = datePicService.Text;
                         cmd.Parameters.Add("@ServiceAmount", MySqlDbType.Int32).Value = txt_serAmount.Text;
+                        cmd.Parameters.Add("@NextSerDate", MySqlDbType.VarChar).Value = datePickerNextServiceDate.Text;
 
                         //cmd.Parameters.Add("@StartDate", MySqlDbType.VarChar).Value = txt_Svnum.Text;
                         //cmd.Parameters.Add("@EndDate", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxStaffS.SelectedValue);StartDate,EndDate//@StartDate,@EndDate,
@@ -788,7 +791,7 @@ namespace Delivery
                 {
 
                     string Query = null;
-                    Query = "UPDATE leasing_details SET VehicleNumber=@VehicleNumber,LeaserName=@LeaserName,LeaserAddress=@LeaserAddress,PhoneNumber=@PhoneNumber,Interestrate=@Interestrate WHERE VehicleNumber=@VehicleNumber";//StartDate=@StartDate,EndDate=@EndDate,
+                    Query = "UPDATE leasing_details SET VehicleNumber=@VehicleNumber,LeaserName=@LeaserName,LeaserAddress=@LeaserAddress,PhoneNumber=@PhoneNumber,Interestrate=@Interestrate WHERE 	LeaserID=@LeaserID";//StartDate=@StartDate,EndDate=@EndDate,
 
 
 
@@ -799,7 +802,7 @@ namespace Delivery
 
 
                         {//cmd.Parameters.Add("@dob", MySqlDbType.Date).Value = datePic.Value;
-                            cmd.Parameters.Add("@VehicleNumber", MySqlDbType.VarChar).Value = Convert.ToInt32(comboBox1VechileNo.SelectedValue);
+                            cmd.Parameters.Add("@VehicleNumber", MySqlDbType.VarChar).Value = Convert.ToInt32(comboBox1VechileNo.SelectedIndex);
                             cmd.Parameters.Add("@LeaserName", MySqlDbType.VarChar).Value = txt_Lname.Text;
                             cmd.Parameters.Add("@LeaserAddress", MySqlDbType.VarChar).Value = txt_Laddress.Text;
                             cmd.Parameters.Add("@PhoneNumber", MySqlDbType.Int32).Value = txt_phoneNo.Text;
@@ -852,7 +855,7 @@ namespace Delivery
                     try
                     {
                         string Query = null;
-                        Query = "DELETE FROM leasing_details  WHERE	VehicleNumber='" + this.comboBox1VechileNo.Text + "';";
+                        Query = "DELETE FROM leasing_details  WHERE			LeaserName='" + this.txt_Lname.Text + "';";
                         MySqlCommand cmd = new MySqlCommand(Query, conn);
                         MySqlDataReader reader;
                         conn.Open();
@@ -881,6 +884,8 @@ namespace Delivery
                 txt_phoneNo.Text = "";
                 txt_interstRate.Text = "";
                 txt_intialPay.Text = "";
+                text_leasing.Text = "";
+                text_balance.Text = "";
 
 
             }
@@ -1044,11 +1049,11 @@ namespace Delivery
 
             try
             {
-                string VehicleNumber = dgvLeasing.SelectedCells[0].Value.ToString();
+                string LeaserID = dgvLeasing.SelectedCells[0].Value.ToString();
                 conn.Open();
                 MySqlDataReader dr = null;
 
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM leasing_details WHERE VehicleNumber =" + VehicleNumber + ";", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM leasing_details WHERE 	LeaserID =" + LeaserID + ";", conn);
 
                 dr = cmd.ExecuteReader();
                 try
@@ -1064,7 +1069,7 @@ namespace Delivery
 
                         //lbl_id.Text = dr["id"].ToString();
                         // for leasing calulction purpose lbl_age.Text = (DateTime.Now.Year - Convert.ToInt32(year)).ToString();
-                       
+                        //txtBoxLeaserid.Text = dr["	LeaserID"].ToString();
                         txt_Lname.Text = dr["LeaserName"].ToString();
                         txt_Laddress.Text = dr["LeaserAddress"].ToString();
                         txt_phoneNo.Text = dr["PhoneNumber"].ToString();
@@ -1175,6 +1180,7 @@ namespace Delivery
 
                    // label_serviceID.Text = dr["	ServiceID"].ToString();
                     txt_vnumberSer.Text = dr["VehicleNumber"].ToString();
+                    comboBoxServiT.Text = dr["ServiceType"].ToString();
                     // datePicService.Value = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
                     txt_serAmount.Text = dr["ServiceAmount"].ToString();
 
@@ -1560,7 +1566,7 @@ namespace Delivery
         private void txt_Lname_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -1568,8 +1574,9 @@ namespace Delivery
 
         private void txt_Laddress_KeyPress_1(object sender, KeyPressEventArgs e)
         {
+
             char ch = e.KeyChar;
-            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && (e.KeyChar != ',') && (e.KeyChar != '/'))
             {
                 e.Handled = true;
             }
@@ -1587,7 +1594,7 @@ namespace Delivery
         private void txt_interstRate_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
-            if (!char.IsControl(e.KeyChar) && !char.IsNumber(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsNumber(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -1596,7 +1603,7 @@ namespace Delivery
         private void txt_intialPay_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
-            if (!char.IsControl(e.KeyChar) && !char.IsNumber(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsNumber(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -1614,7 +1621,7 @@ namespace Delivery
         private void txt_serAmount_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -1623,7 +1630,7 @@ namespace Delivery
         private void txt_Cname_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -1631,8 +1638,9 @@ namespace Delivery
 
         private void txt_cAddress_KeyPress_1(object sender, KeyPressEventArgs e)
         {
+
             char ch = e.KeyChar;
-            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && (e.KeyChar != ',') && (e.KeyChar != '/'))
             {
                 e.Handled = true;
             }
@@ -1679,7 +1687,7 @@ namespace Delivery
         private void txtSname_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -1694,7 +1702,7 @@ namespace Delivery
         {
 
             char ch = e.KeyChar;
-            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && (e.KeyChar != ',') && (e.KeyChar != '/'))
             {
                 e.Handled = true;
             }
@@ -1815,6 +1823,44 @@ namespace Delivery
             if (opt == DialogResult.OK)
 
                 this.Close();
+        }
+
+        private void text_balance_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_interstRate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bttn_balance_Click(object sender, EventArgs e)
+        {
+            //variable diclarition
+            int cost = 0;
+            double intrestRate = 0, initialpay = 0, balance = 0;
+
+            //read input from user
+            cost = int.Parse(text_leasing.Text);
+            intrestRate = double.Parse(txt_interstRate.Text);
+            initialpay = double.Parse(txt_intialPay.Text);
+
+            //do calculations
+            double costrate = cost * (intrestRate / 100);
+            balance = costrate - -initialpay;
+
+            //display result
+            text_balance.Text = balance.ToString();
+
+
+
+
+        }
+
+        private void txt_Laddress_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
 

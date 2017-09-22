@@ -15,8 +15,8 @@ C:\Users\UserPC\Documents\GitHub\Delivery\Delivery\bin\Debug\Delivery.pdb
 C:\Users\UserPC\Documents\GitHub\Delivery\Delivery\bin\Debug\MySql.Data.dll
 C:\Users\UserPC\Documents\GitHub\Delivery\Delivery\bin\Debug\MySql.Data.xml
 C:\Users\UserPC\Documents\GitHub\Delivery\Delivery\obj\Debug\Delivery.csprojResolveAssemblyReference.cache
-C:\Users\UserPC\Documents\GitHub\Delivery\Delivery\obj\Debug\Delivery.Form1.resources
 C:\Users\UserPC\Documents\GitHub\Delivery\Delivery\obj\Debug\Delivery.Properties.Resources.resources
 C:\Users\UserPC\Documents\GitHub\Delivery\Delivery\obj\Debug\Delivery.csproj.GenerateResource.Cache
 C:\Users\UserPC\Documents\GitHub\Delivery\Delivery\obj\Debug\Delivery.exe
 C:\Users\UserPC\Documents\GitHub\Delivery\Delivery\obj\Debug\Delivery.pdb
+C:\Users\UserPC\Documents\GitHub\Delivery\Delivery\obj\Debug\Delivery.Vechicle_Mgt.resources

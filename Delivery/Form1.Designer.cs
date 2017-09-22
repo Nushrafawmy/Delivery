@@ -1,6 +1,6 @@
 ﻿namespace Delivery
 {
-    partial class Form1
+    partial class Vechicle_Mgt
     {
         /// <summary>
         /// Required designer variable.
@@ -53,13 +53,15 @@
             this.txt_vName = new System.Windows.Forms.TextBox();
             this.txt_search = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.text_leasing = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.text_balance = new System.Windows.Forms.TextBox();
             this.comboBox1VechileNo = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bttn_balance = new System.Windows.Forms.Button();
             this.txt_phoneNo = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.datepicLend = new System.Windows.Forms.DateTimePicker();
             this.datePicLstart = new System.Windows.Forms.DateTimePicker();
-            this.labelLeaserID = new System.Windows.Forms.Label();
             this.label_leaserID = new System.Windows.Forms.Label();
             this.txt_intialPay = new System.Windows.Forms.TextBox();
             this.txt_interstRate = new System.Windows.Forms.TextBox();
@@ -155,6 +157,11 @@
             this.txt_searchS = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.txtBoxLeaserid = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.datePickerNextServiceDate = new System.Windows.Forms.DateTimePicker();
+            this.label45 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVechicle)).BeginInit();
@@ -166,6 +173,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
+            this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -440,13 +448,16 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.txtBoxLeaserid);
+            this.tabPage4.Controls.Add(this.text_leasing);
+            this.tabPage4.Controls.Add(this.label44);
+            this.tabPage4.Controls.Add(this.text_balance);
             this.tabPage4.Controls.Add(this.comboBox1VechileNo);
-            this.tabPage4.Controls.Add(this.button2);
+            this.tabPage4.Controls.Add(this.bttn_balance);
             this.tabPage4.Controls.Add(this.txt_phoneNo);
             this.tabPage4.Controls.Add(this.label42);
             this.tabPage4.Controls.Add(this.datepicLend);
             this.tabPage4.Controls.Add(this.datePicLstart);
-            this.tabPage4.Controls.Add(this.labelLeaserID);
             this.tabPage4.Controls.Add(this.label_leaserID);
             this.tabPage4.Controls.Add(this.txt_intialPay);
             this.tabPage4.Controls.Add(this.txt_interstRate);
@@ -474,6 +485,32 @@
             this.tabPage4.Text = "Leasing Details";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // text_leasing
+            // 
+            this.text_leasing.Location = new System.Drawing.Point(687, 229);
+            this.text_leasing.Name = "text_leasing";
+            this.text_leasing.Size = new System.Drawing.Size(100, 20);
+            this.text_leasing.TabIndex = 82;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Cambria", 12F);
+            this.label44.Location = new System.Drawing.Point(588, 230);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(99, 19);
+            this.label44.TabIndex = 81;
+            this.label44.Text = "Vechicle Cost";
+            // 
+            // text_balance
+            // 
+            this.text_balance.Enabled = false;
+            this.text_balance.Location = new System.Drawing.Point(687, 283);
+            this.text_balance.Name = "text_balance";
+            this.text_balance.Size = new System.Drawing.Size(100, 20);
+            this.text_balance.TabIndex = 80;
+            this.text_balance.TextChanged += new System.EventHandler(this.text_balance_TextChanged);
+            // 
             // comboBox1VechileNo
             // 
             this.comboBox1VechileNo.FormattingEnabled = true;
@@ -482,17 +519,18 @@
             this.comboBox1VechileNo.Size = new System.Drawing.Size(121, 21);
             this.comboBox1VechileNo.TabIndex = 79;
             // 
-            // button2
+            // bttn_balance
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.button2.Font = new System.Drawing.Font("Cambria", 12F);
-            this.button2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button2.Location = new System.Drawing.Point(606, 282);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 43);
-            this.button2.TabIndex = 78;
-            this.button2.Text = "Balance";
-            this.button2.UseVisualStyleBackColor = false;
+            this.bttn_balance.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.bttn_balance.Font = new System.Drawing.Font("Cambria", 12F);
+            this.bttn_balance.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.bttn_balance.Location = new System.Drawing.Point(606, 270);
+            this.bttn_balance.Name = "bttn_balance";
+            this.bttn_balance.Size = new System.Drawing.Size(75, 43);
+            this.bttn_balance.TabIndex = 78;
+            this.bttn_balance.Text = "Balance";
+            this.bttn_balance.UseVisualStyleBackColor = false;
+            this.bttn_balance.Click += new System.EventHandler(this.bttn_balance_Click);
             // 
             // txt_phoneNo
             // 
@@ -541,16 +579,6 @@
             this.datePicLstart.TabIndex = 74;
             this.datePicLstart.Value = new System.DateTime(1963, 1, 1, 0, 0, 0, 0);
             // 
-            // labelLeaserID
-            // 
-            this.labelLeaserID.AutoSize = true;
-            this.labelLeaserID.Font = new System.Drawing.Font("Cambria", 12F);
-            this.labelLeaserID.Location = new System.Drawing.Point(437, 18);
-            this.labelLeaserID.Name = "labelLeaserID";
-            this.labelLeaserID.Size = new System.Drawing.Size(19, 19);
-            this.labelLeaserID.TabIndex = 73;
-            this.labelLeaserID.Text = "--";
-            // 
             // label_leaserID
             // 
             this.label_leaserID.AutoSize = true;
@@ -575,6 +603,7 @@
             this.txt_interstRate.Name = "txt_interstRate";
             this.txt_interstRate.Size = new System.Drawing.Size(100, 20);
             this.txt_interstRate.TabIndex = 70;
+            this.txt_interstRate.TextChanged += new System.EventHandler(this.txt_interstRate_TextChanged);
             this.txt_interstRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_interstRate_KeyPress_1);
             // 
             // label32
@@ -613,6 +642,7 @@
             this.txt_Laddress.Name = "txt_Laddress";
             this.txt_Laddress.Size = new System.Drawing.Size(258, 20);
             this.txt_Laddress.TabIndex = 66;
+            this.txt_Laddress.TextChanged += new System.EventHandler(this.txt_Laddress_TextChanged);
             this.txt_Laddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Laddress_KeyPress_1);
             // 
             // txt_Lname
@@ -759,6 +789,8 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.datePickerNextServiceDate);
+            this.tabPage5.Controls.Add(this.label45);
             this.tabPage5.Controls.Add(this.label43);
             this.tabPage5.Controls.Add(this.datePicService);
             this.tabPage5.Controls.Add(this.labelSerID);
@@ -1610,6 +1642,8 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.button3);
+            this.tabPage6.Controls.Add(this.button2);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Size = new System.Drawing.Size(803, 433);
@@ -1617,13 +1651,68 @@
             this.tabPage6.Text = "Reports";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // txtBoxLeaserid
+            // 
+            this.txtBoxLeaserid.Enabled = false;
+            this.txtBoxLeaserid.Location = new System.Drawing.Point(452, 17);
+            this.txtBoxLeaserid.Name = "txtBoxLeaserid";
+            this.txtBoxLeaserid.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxLeaserid.TabIndex = 83;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.button2.Font = new System.Drawing.Font("Cambria", 12F);
+            this.button2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button2.Location = new System.Drawing.Point(62, 47);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(169, 43);
+            this.button2.TabIndex = 81;
+            this.button2.Text = "Leasing Report";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.button3.Font = new System.Drawing.Font("Cambria", 12F);
+            this.button3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button3.Location = new System.Drawing.Point(62, 168);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(169, 43);
+            this.button3.TabIndex = 82;
+            this.button3.Text = "Service Report";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // datePickerNextServiceDate
+            // 
+            this.datePickerNextServiceDate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.datePickerNextServiceDate.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datePickerNextServiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.datePickerNextServiceDate.Location = new System.Drawing.Point(453, 295);
+            this.datePickerNextServiceDate.MaxDate = new System.DateTime(1999, 12, 31, 0, 0, 0, 0);
+            this.datePickerNextServiceDate.MinDate = new System.DateTime(1963, 1, 1, 0, 0, 0, 0);
+            this.datePickerNextServiceDate.Name = "datePickerNextServiceDate";
+            this.datePickerNextServiceDate.Size = new System.Drawing.Size(126, 26);
+            this.datePickerNextServiceDate.TabIndex = 92;
+            this.datePickerNextServiceDate.Value = new System.DateTime(1963, 1, 1, 0, 0, 0, 0);
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Cambria", 12F);
+            this.label45.Location = new System.Drawing.Point(290, 301);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(131, 19);
+            this.label45.TabIndex = 91;
+            this.label45.Text = "Next Service Date";
+            // 
+            // Vechicle_Mgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 461);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Form1";
+            this.Name = "Vechicle_Mgt";
             this.Text = "Vehicle Mgt";
             this.Load += new System.EventHandler(this.Form1_Load_1);
             this.tabControl1.ResumeLayout(false);
@@ -1642,6 +1731,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).EndInit();
+            this.tabPage6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1759,7 +1849,6 @@
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label_TripIdC;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label labelLeaserID;
         private System.Windows.Forms.Label label_leaserID;
         private System.Windows.Forms.Label labelSerID;
         private System.Windows.Forms.Label label_serviceID;
@@ -1772,9 +1861,17 @@
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.TextBox txt_phoneNo;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bttn_balance;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.ComboBox comboBox1VechileNo;
+        private System.Windows.Forms.TextBox text_balance;
+        private System.Windows.Forms.TextBox text_leasing;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox txtBoxLeaserid;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DateTimePicker datePickerNextServiceDate;
+        private System.Windows.Forms.Label label45;
     }
 }
 
