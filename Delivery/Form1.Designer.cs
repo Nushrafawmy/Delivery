@@ -162,6 +162,16 @@
             this.button3 = new System.Windows.Forms.Button();
             this.datePickerNextServiceDate = new System.Windows.Forms.DateTimePicker();
             this.label45 = new System.Windows.Forms.Label();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.textBox_Street = new System.Windows.Forms.TextBox();
+            this.textBox_City = new System.Windows.Forms.TextBox();
+            this.Street = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVechicle)).BeginInit();
@@ -174,6 +184,11 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
             this.tabPage6.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -183,6 +198,7 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
@@ -1706,6 +1722,121 @@
             this.label45.TabIndex = 91;
             this.label45.Text = "Next Service Date";
             // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.splitContainer1);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(803, 433);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Maps";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.button5);
+            this.splitContainer1.Panel1.Controls.Add(this.button6);
+            this.splitContainer1.Panel1.Controls.Add(this.button4);
+            this.splitContainer1.Panel1.Controls.Add(this.label47);
+            this.splitContainer1.Panel1.Controls.Add(this.Street);
+            this.splitContainer1.Panel1.Controls.Add(this.textBox_City);
+            this.splitContainer1.Panel1.Controls.Add(this.textBox_Street);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.webBrowser1);
+            this.splitContainer1.Size = new System.Drawing.Size(803, 433);
+            this.splitContainer1.SplitterDistance = 267;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // textBox_Street
+            // 
+            this.textBox_Street.Location = new System.Drawing.Point(125, 34);
+            this.textBox_Street.Name = "textBox_Street";
+            this.textBox_Street.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Street.TabIndex = 0;
+            // 
+            // textBox_City
+            // 
+            this.textBox_City.Location = new System.Drawing.Point(125, 130);
+            this.textBox_City.Name = "textBox_City";
+            this.textBox_City.Size = new System.Drawing.Size(100, 20);
+            this.textBox_City.TabIndex = 1;
+            // 
+            // Street
+            // 
+            this.Street.AutoSize = true;
+            this.Street.Font = new System.Drawing.Font("Cambria", 12F);
+            this.Street.Location = new System.Drawing.Point(30, 34);
+            this.Street.Name = "Street";
+            this.Street.Size = new System.Drawing.Size(50, 19);
+            this.Street.TabIndex = 2;
+            this.Street.Text = "Street";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Cambria", 12F);
+            this.label47.Location = new System.Drawing.Point(30, 137);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(35, 19);
+            this.label47.TabIndex = 3;
+            this.label47.Text = "City";
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.button4.Font = new System.Drawing.Font("Cambria", 12F);
+            this.button4.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button4.Location = new System.Drawing.Point(77, 212);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 43);
+            this.button4.TabIndex = 58;
+            this.button4.Text = "Search";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(532, 433);
+            this.webBrowser1.TabIndex = 0;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.button5.Font = new System.Drawing.Font("Cambria", 12F);
+            this.button5.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button5.Location = new System.Drawing.Point(140, 324);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 43);
+            this.button5.TabIndex = 63;
+            this.button5.Text = "Close";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.button6.Font = new System.Drawing.Font("Cambria", 12F);
+            this.button6.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button6.Location = new System.Drawing.Point(43, 324);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 43);
+            this.button6.TabIndex = 62;
+            this.button6.Text = "Clear";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Vechicle_Mgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1732,6 +1863,12 @@
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).EndInit();
             this.tabPage6.ResumeLayout(false);
+            this.tabPage7.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1872,6 +2009,16 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DateTimePicker datePickerNextServiceDate;
         private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label Street;
+        private System.Windows.Forms.TextBox textBox_City;
+        private System.Windows.Forms.TextBox textBox_Street;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
 

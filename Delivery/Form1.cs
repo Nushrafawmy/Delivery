@@ -1863,6 +1863,56 @@ namespace Delivery
 
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string street = textBox_Street.Text;
+            string city = textBox_City.Text;
+            try
+            {
+                StringBuilder queryaddress = new StringBuilder();
+                queryaddress.Append("http://maps.google.com/maps?q=");
+
+                if (street != string.Empty) {
+                    queryaddress.Append(street+","+"+");
+
+                }
+                if (city != string.Empty)
+                {
+                    queryaddress.Append(city + "," + "+");
+
+                }
+
+                webBrowser1.Navigate(queryaddress.ToString());
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message.ToString(),"Error");
+
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            DialogResult confirm = MessageBox.Show("Are you Sure You want clear fileds", "Clear", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+            {
+                textBox_Street.Text = "";
+                textBox_City.Text = "";
+               
+
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            var opt = MessageBox.Show("Are you sure you want to close?", "Confirm Clsoe", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+
+            if (opt == DialogResult.OK)
+
+                this.Close();
+        }
+
 
         // this.Close();
     }
