@@ -244,6 +244,7 @@
             this.btn_close.TabIndex = 19;
             this.btn_close.Text = "Close";
             this.btn_close.UseVisualStyleBackColor = false;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // btn_clear
             // 
@@ -435,6 +436,7 @@
             this.txt_search.Name = "txt_search";
             this.txt_search.Size = new System.Drawing.Size(100, 20);
             this.txt_search.TabIndex = 0;
+            this.txt_search.TextChanged += new System.EventHandler(this.txt_search_TextChanged);
             // 
             // tabPage4
             // 
@@ -743,6 +745,7 @@
             this.text_serachL.Name = "text_serachL";
             this.text_serachL.Size = new System.Drawing.Size(100, 20);
             this.text_serachL.TabIndex = 53;
+            this.text_serachL.TextChanged += new System.EventHandler(this.text_serachL_TextChanged);
             // 
             // label29
             // 
@@ -858,6 +861,7 @@
             this.butnClose.TabIndex = 84;
             this.butnClose.Text = "Close";
             this.butnClose.UseVisualStyleBackColor = false;
+            this.butnClose.Click += new System.EventHandler(this.butnClose_Click);
             // 
             // butnClear
             // 
@@ -973,6 +977,7 @@
             this.txt_serachSer.Name = "txt_serachSer";
             this.txt_serachSer.Size = new System.Drawing.Size(100, 20);
             this.txt_serachSer.TabIndex = 73;
+            this.txt_serachSer.TextChanged += new System.EventHandler(this.txt_serachSer_TextChanged);
             // 
             // label37
             // 
@@ -1193,6 +1198,7 @@
             this.button1.TabIndex = 43;
             this.button1.Text = "Close";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_clearC
             // 
@@ -1280,6 +1286,7 @@
             this.txt_serachC.Name = "txt_serachC";
             this.txt_serachC.Size = new System.Drawing.Size(100, 20);
             this.txt_serachC.TabIndex = 16;
+            this.txt_serachC.TextChanged += new System.EventHandler(this.txt_serachC_TextChanged);
             // 
             // label17
             // 
@@ -1501,6 +1508,7 @@
             this.btn_closeS.TabIndex = 24;
             this.btn_closeS.Text = "Close";
             this.btn_closeS.UseVisualStyleBackColor = false;
+            this.btn_closeS.Click += new System.EventHandler(this.btn_closeS_Click);
             // 
             // btn_clearS
             // 
@@ -1588,6 +1596,7 @@
             this.txt_searchS.Name = "txt_searchS";
             this.txt_searchS.Size = new System.Drawing.Size(100, 20);
             this.txt_searchS.TabIndex = 9;
+            this.txt_searchS.TextChanged += new System.EventHandler(this.txt_searchS_TextChanged);
             // 
             // label8
             // 

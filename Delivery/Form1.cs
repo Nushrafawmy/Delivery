@@ -890,6 +890,12 @@ namespace Delivery
         private void btn_closeL_Click(object sender, EventArgs e)
         {
 
+            var opt = MessageBox.Show("Are you sure you want to close?\nAny modifications to the user will not be saved", "Confirm Clsoe", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+
+            if (opt == DialogResult.OK)
+
+                this.Close();
         }
 
         private void btn_saveS_Click_1(object sender, EventArgs e)
@@ -1059,6 +1065,7 @@ namespace Delivery
 
                         //lbl_id.Text = dr["id"].ToString();
                         // for leasing calulction purpose lbl_age.Text = (DateTime.Now.Year - Convert.ToInt32(year)).ToString();
+                       
                         txt_Lname.Text = dr["LeaserName"].ToString();
                         txt_Laddress.Text = dr["LeaserAddress"].ToString();
                         txt_phoneNo.Text = dr["PhoneNumber"].ToString();
@@ -1167,7 +1174,7 @@ namespace Delivery
                     string day = dr["ServiceDate"].ToString().Substring(8, 2);
                    */
 
-
+                   // label_serviceID.Text = dr["	ServiceID"].ToString();
                     txt_vnumberSer.Text = dr["VehicleNumber"].ToString();
                     // datePicService.Value = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
                     txt_serAmount.Text = dr["ServiceAmount"].ToString();
@@ -1468,7 +1475,7 @@ namespace Delivery
                     try
                     {
                         string Query = null;
-                        Query = "DELETE FROM to_customers WHERE 	TripID='" + this.label_TripIdC.Text + "';";
+                        Query = "DELETE FROM to_customers WHERE VehicleNumber='" + this.txt_vnumberC.Text + "';";
                         MySqlCommand cmd = new MySqlCommand(Query, conn);
                         MySqlDataReader reader;
                         conn.Open();
@@ -1728,8 +1735,94 @@ namespace Delivery
                 e.Handled = true;
             }
         }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            var opt = MessageBox.Show("Are you sure you want to close?\nAny modifications to the user will not be saved", "Confirm Clsoe", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+
+            if (opt == DialogResult.OK)
+
+                this.Close();
+
+        }
+
+        private void txt_search_TextChanged(object sender, EventArgs e)
+        {
+            string filter = txt_search.Text;
+            // Loadtable(mdgv_production1, "SELECT batchNo,currentJob FROM `batch` WHERE batchNo like '%" + filter + "%'");
+
+            LoadToDatagridview(dgvVechicle, "SELECT VehicleNumber,Capacity,Cost FROM vehicle WHERE 	VehicleNumber LIKE '%" + filter + "%'");
+           
+
+
+        }
+
+        private void text_serachL_TextChanged(object sender, EventArgs e)
+        {
+            string filter = text_serachL.Text;
+            LoadToDatagridview(dgvLeasing, "SELECT * FROM leasing_details WHERE 	VehicleNumber LIKE '%" + filter + "%'");
+        }
+
+        private void txt_serachSer_TextChanged(object sender, EventArgs e)
+        {
+            string filter = txt_serachSer.Text;
+            LoadToDatagridview(dgvService, "SELECT * FROM service_details WHERE 	VehicleNumber LIKE '%" + filter + "%'");
+
+        }
+
+        private void txt_serachC_TextChanged(object sender, EventArgs e)
+        {
+            string filter = txt_serachC.Text;
+            LoadToDatagridview(dgvCustomer, "SELECT * FROM to_customers WHERE 	CustomerName LIKE '%" + filter + "%'");
+
+        }
+
+        private void txt_searchS_TextChanged(object sender, EventArgs e)
+        {
+            string filter = txt_searchS.Text;
+            LoadToDatagridview(dgvSuppliers, "SELECT * FROM from_suppliers WHERE 	SupplierName LIKE '%" + filter +"%'");
+        }
+
+        private void butnClose_Click(object sender, EventArgs e)
+        {
+
+            var opt = MessageBox.Show("Are you sure you want to close?\nAny modifications to the user will not be saved", "Confirm Clsoe", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+
+            if (opt == DialogResult.OK)
+
+                this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            var opt = MessageBox.Show("Are you sure you want to close?\nAny modifications to the user will not be saved", "Confirm Clsoe", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+
+            if (opt == DialogResult.OK)
+
+                this.Close();
+        }
+
+        private void btn_closeS_Click(object sender, EventArgs e)
+        {
+
+            var opt = MessageBox.Show("Are you sure you want to close?\nAny modifications to the user will not be saved", "Confirm Clsoe", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+
+            if (opt == DialogResult.OK)
+
+                this.Close();
+        }
+
+
+        // this.Close();
     }
-}
+    }
+
+
 
        
     
