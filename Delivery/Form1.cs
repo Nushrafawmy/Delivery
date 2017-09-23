@@ -557,7 +557,7 @@ namespace Delivery
                     string VehicleNumber = comboBox1VechileNo.ToString();
                     using (MySqlCommand cmd = new MySqlCommand(Query, conn))
                     {
-                        cmd.Parameters.Add("@VehicleNumber", MySqlDbType.VarChar).Value = Convert.ToInt32(comboBox1VechileNo.SelectedIndex);
+                        cmd.Parameters.Add("@VehicleNumber", MySqlDbType.VarChar).Value =(comboBox1VechileNo.Text);
                        // cmd.Parameters.Add("@Staffid", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxCustomer.SelectedIndex);
 
                         cmd.Parameters.Add("@LeaserName", MySqlDbType.VarChar).Value = txt_Lname.Text;
@@ -625,7 +625,7 @@ namespace Delivery
                     {
                         cmd.Parameters.Add("@VehicleNumber", MySqlDbType.VarChar).Value = txt_vnumberSer.Text;
 
-                        cmd.Parameters.Add("@ServiceType", MySqlDbType.VarChar).Value =(comboBoxServiT.SelectedIndex).ToString();
+                        cmd.Parameters.Add("@ServiceType", MySqlDbType.VarChar).Value =(comboBoxServiT.Text);
                         cmd.Parameters.Add("@ServiceDate", MySqlDbType.VarChar).Value = datePicService.Text;
                         cmd.Parameters.Add("@ServiceAmount", MySqlDbType.Int32).Value = txt_serAmount.Text;
                         cmd.Parameters.Add("@NextSerDate", MySqlDbType.VarChar).Value = datePickerNextServiceDate.Text;
@@ -879,6 +879,7 @@ namespace Delivery
             DialogResult confirm = MessageBox.Show("Are you Sure You want clear fileds", "Clear", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm == DialogResult.Yes)
             {
+                comboBox1VechileNo.Text = "";
                 txt_Lname.Text = "";
                 txt_Laddress.Text = "";
                 txt_phoneNo.Text = "";
@@ -1070,6 +1071,8 @@ namespace Delivery
                         //lbl_id.Text = dr["id"].ToString();
                         // for leasing calulction purpose lbl_age.Text = (DateTime.Now.Year - Convert.ToInt32(year)).ToString();
                         //txtBoxLeaserid.Text = dr["	LeaserID"].ToString();
+                        //cmd.Parameters.Add("@VehicleNumber", MySqlDbType.VarChar).Value =(comboBox1VechileNo.Text);
+                        comboBox1VechileNo.Text = dr["VehicleNumber"].ToString();
                         txt_Lname.Text = dr["LeaserName"].ToString();
                         txt_Laddress.Text = dr["LeaserAddress"].ToString();
                         txt_phoneNo.Text = dr["PhoneNumber"].ToString();
@@ -1177,8 +1180,10 @@ namespace Delivery
                     string month = dr["ServiceDate"].ToString().Substring(5, 2);
                     string day = dr["ServiceDate"].ToString().Substring(8, 2);
                    */
+                    //comboBox1VechileNo.Text = dr["VehicleNumber"].ToString();
 
-                   // label_serviceID.Text = dr["	ServiceID"].ToString();
+                    // label_serviceID.Text = dr["	ServiceID"].ToString();
+                    // comboBox1VechileNo.Text = dr["VehicleNumber"].ToString();
                     txt_vnumberSer.Text = dr["VehicleNumber"].ToString();
                     comboBoxServiT.Text = dr["ServiceType"].ToString();
                     // datePicService.Value = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
@@ -1269,17 +1274,17 @@ namespace Delivery
                     string day = dr["ServiceDate"].ToString().Substring(8, 2);
                    */
 
-
+                   // cmd.Parameters.Add("@Staffid", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxCustomer.SelectedIndex);
 
                     txt_Cname.Text = dr["CustomerName"].ToString();
                     txt_cAddress.Text = dr["CustomerAddress"].ToString();
                     // datePicC.Value = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
-
-
+                    // cmd.Parameters.Add("@Time", MySqlDbType.VarChar).Value = txt_Ctime.Text;
+                    txt_Ctime.Text = dr["Time"].ToString();
                     txt_cweight.Text = dr["StockWeight"].ToString();
                     txt_noofTc.Text = dr["NoOfTurn"].ToString();
                     txt_vnumberC.Text = dr["VehicleNumber"].ToString();
-                    comboBoxCustomer.SelectedValue = dr["Staffid"].ToString();
+                    comboBoxCustomer.Text = dr["Staffid"].ToString();
 
 
 
@@ -1375,12 +1380,12 @@ namespace Delivery
                     txtSname.Text = dr["SupplierName"].ToString();
                     txtsAddress.Text = dr["SupplierAddress"].ToString();
                     // datePicS.Value = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
-
-
+                    // cmd.Parameters.Add("@Time", MySqlDbType.VarChar).Value = txt_Time.Text;
+                    txt_Time.Text = dr["Time"].ToString();
                     txtweightS.Text = dr["StockWeight"].ToString();
                     txtSnoTurn.Text = dr["NoOfTurn"].ToString();
                     txt_Svnum.Text = dr["VehicleNumber"].ToString();
-                    comboBoxStaffS.SelectedValue = dr["Staffid"].ToString();
+                    comboBoxStaffS.Text = dr["Staffid"].ToString();
 
 
 
@@ -1462,9 +1467,13 @@ namespace Delivery
 
             DialogResult confirm = MessageBox.Show("Are you Sure You want clear fileds", "Clear", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm == DialogResult.Yes)
-            {
+            {   //cmd.Parameters.Add("@ServiceType", MySqlDbType.VarChar).Value =(comboBoxServiT.Text);
+                //comboBoxServiT
+                //comboBox1VechileNo.Text = "";
                 txt_vnumberSer.Text = "";
+                comboBoxServiT.Text = "";
                 txt_serAmount.Text = "";
+               
 
 
 
@@ -1508,14 +1517,15 @@ namespace Delivery
         {
             DialogResult confirm = MessageBox.Show("Are you Sure You want clear fileds", "Clear", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm == DialogResult.Yes)
-            {
+            {//cmd.Parameters.Add("@Staffid", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxCustomer.SelectedIndex);
 
                 txt_Cname.Text = "";
                 txt_cAddress.Text = "";
                 txt_cweight.Text = "";
                 txt_noofTc.Text = "";
                 txt_vnumberC.Text = "";
-
+                comboBoxCustomer.Text = "";
+                txt_Ctime.Text = "";
             }
         }
 
@@ -1553,13 +1563,14 @@ namespace Delivery
         {
             DialogResult confirm = MessageBox.Show("Are you Sure You want clear fileds", "Clear", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm == DialogResult.Yes)
-            {
+            {//cmd.Parameters.Add("@Staffid", MySqlDbType.Int32).Value = Convert.ToInt32(comboBoxStaffS.SelectedIndex);
                 txtSname.Text = "";
                 txtsAddress.Text="";
                 txtweightS.Text = "";
                 txtSnoTurn.Text = "";
                 txt_Svnum.Text = "";
-
+                comboBoxStaffS.Text = "";
+                txt_Time.Text = "";
             }
         }
 
@@ -1848,7 +1859,7 @@ namespace Delivery
 
             //do calculations
             double costrate = cost * (intrestRate / 100);
-            balance = costrate - -initialpay;
+            balance = initialpay-costrate;
 
             //display result
             text_balance.Text = balance.ToString();
